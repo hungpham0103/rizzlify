@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rizzlify</title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+
+<body>
+  <header>
+    <h1 id="logo">Rizzlify</h1>
+  </header>
+  <main>
+    <div id="phone-container">
+      <div id="chat-container">
+        <div id="chat-messages">
+          <div class="message incoming">
+            <p>What do you need to rizzlify today?</p>
+          </div>
+          {% for message in messages %}
+            <div class="message {{ message.sender }}">
+              <p>{{ message.text }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <form id="input-form" action="/generate" method="POST">
+        <textarea type="text" id="user-input" name="user-input" placeholder="Type your message..." autofocus autocomplete="off"></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </main>
+  <script src="/static/script.js"></script>
+</body>
+
+</html>
